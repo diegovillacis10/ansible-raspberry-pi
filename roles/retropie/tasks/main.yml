@@ -1,0 +1,7 @@
+---
+
+- name: Download RetroPie
+  get_url:
+    url: https://github.com/RetroPie/RetroPie-Setup/releases/download/4.1/retropie-4.1-rpi2_rpi3.img.gz
+    dest: /etc/foo.conf
+    checksum: md5:4bf44fa37bb9db72b9d7c6dfab6fe015
