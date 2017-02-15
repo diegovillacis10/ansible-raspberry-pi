@@ -1,0 +1,8 @@
+---
+
+- hosts: pi
+  become: yes
+  remote_user: ci_change_master
+
+  roles:
+    - role: retropie
