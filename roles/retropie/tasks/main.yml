@@ -1,7 +1,27 @@
 ---
 
-- name: Download RetroPie
-  get_url:
-    url: https://github.com/RetroPie/RetroPie-Setup/releases/download/4.1/retropie-4.1-rpi2_rpi3.img.gz
-    dest: /etc/foo.conf
-    checksum: md5:4bf44fa37bb9db72b9d7c6dfab6fe015
+tasks:
+  - name: Upgrade packages
+    apt:
+      upgrade: dist
+      update_cache: yes
+
+  - name: Install git
+    apt:
+      name: git
+      state: installed
+
+  - name: Clone Retro-Pie repository
+    git:
+      repo: https://github.com/RetroPie/RetroPie-Setup.git
+      depth: 1
+      dest: /home/pi/RetroPie-Setup
+      version: master
+
+  - name: Make script executable
+    file:
+      path: ~/RetroPie-Setup/retropie_setup.sh
+      mode: 0755
+
+  - name: Run setup script
+    command: sh ~/RetroPie-Setup/retropie_setup.sh
