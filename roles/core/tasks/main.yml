@@ -1,0 +1,12 @@
+---
+
+tasks:
+  - name: Upgrade packages
+  - apt:
+      upgrade: dist
+      update_cache: yes
+
+  - name: Install git
+    apt:
+      name: git
+      state: installed
